@@ -1,7 +1,16 @@
+#PARTE A
+
+#EJ 2
 setwd("C:/Users/fchoi/OneDrive - Centaurus/Escritorio/ITBA/TyAdeAA/TP1")
 base = read.table("optdigits.tra",sep=",")
+
+#EJ 3
 head(base, 1)
+
+#EJ 4
 dim(base)
+
+#EJ 5
 library(jpeg) #cargamos la librería 
 vector=base[14,] #tomamos la fila 14 por separado
 vector #visualizamos que la fila sigue siendo un data.frame con títulos de columnas
@@ -18,6 +27,7 @@ imagen=t(imagen)
 #rotamos la imagen
 plot(as.raster(imagen))
 plot(as.raster(1 - imagen))
+
 #EJ 6
 vector=base[814,] #tomamos la fila 14 por separado
 vector #visualizamos que la fila sigue siendo un data.frame con títulos de columnas
@@ -105,4 +115,15 @@ nuevo_predict
 #EJ 1
 set.seed(123);red=nnet(Numero~.,entreno,size=40,maxit=20000,MaxNWts=20000)
 confusionMatrix(factor(pred),testeo$Numero)
+
+
+#EJ3
+
+cm <- confusionMatrix(factor(pred),testeo$Numero)
+conf_matrix <- cm$table
+diagonal <- diag(conf_matrix)
+acertados <- sum(diagonal)
+registros <- dim(testeo[1])
+acc <- acertados / registros
+acc
 
